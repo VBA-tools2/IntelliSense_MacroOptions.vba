@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- REF: <https://www.w3schools.com/xml/schema_intro.asp> -->
+<!-- REF: XML Schema <https://www.w3schools.com/xml/schema_intro.asp> -->
+
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://schemas.excel-dna.net/intellisense/1.0"
+	xmlns:tns="http://schemas.excel-dna.net/intellisense/1.0"
+	elementFormDefault="qualified"
+>
+
+	<!-- define a type that should apply to each string -->
+	<xs:simpleType name="String255">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="255"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<!-- define a type that is used for the `Category` element which can -->
+	<!-- either be an integer or a String255 -->
+	<xs:simpleType name="IntegerOrString">
+		<xs:union memberTypes="tns:String255">
+			<xs:simpleType>
+				<!-- BUG: neither `maxInclusive` nor `posInteger` is working -->
+				<xs:restriction base="xs:positiveInteger">
+					<xs:maxInclusive value="32"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+
+	<!-- define a group of attributes which is used for the `Function` -->
+	<!-- as well as for the `Argument` elements -->
+	<xs:attributeGroup name="NameDesc">
+		<xs:attribute name="Name" type="tns:String255" use="required"/>
+		<xs:attribute name="Description" type="tns:String255" use="required"/>
+	</xs:attributeGroup>
+
+	<xs:element name="IntelliSense">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="FunctionInfo">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Function" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Argument" minOccurs="0" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:attributeGroup ref="tns:NameDesc"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attributeGroup ref="tns:NameDesc"/>
+									<xs:attribute name="Category" type="tns:IntegerOrString" use="optional"/>
+									<xs:attribute name="HelpContextId" type="tns:String255" use="optional"/>
+									<xs:attribute name="HelpFile" type="tns:String255" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

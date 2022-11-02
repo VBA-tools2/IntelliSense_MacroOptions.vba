@@ -1,0 +1,17 @@
+// cSpell Settings
+{
+    // ignoreWords - list of words that should be ignored
+    "ignoreWords": [
+        "fixlinks2udf",
+        "ifdef",
+        "govert",
+        "rubberduck",
+        "sourcedir",
+        "testdir"
+    ],
+    // words - list of words to be always considered correct
+    "words": [
+        "Karel",
+        "Pieterse"
+    ]
+}

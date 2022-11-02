@@ -1,0 +1,2 @@
+*.xlam filter=lfs diff=lfs merge=lfs -text
+*.xll filter=lfs diff=lfs merge=lfs -text

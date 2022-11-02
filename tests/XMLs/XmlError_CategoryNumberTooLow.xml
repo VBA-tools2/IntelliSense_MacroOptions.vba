@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../src/IntelliSense.xsd"?>
+<IntelliSense
+	xmlns="http://schemas.excel-dna.net/intellisense/1.0"
+>
+	<FunctionInfo>
+		<Function
+			Name="MyVBAFunction"
+			Description="A function described in XML"
+			Category="0"
+		>
+		</Function>
+	</FunctionInfo>
+</IntelliSense>

@@ -1,0 +1,59 @@
+
+= IntelliSense_MacroOptions.vba
+:experimental:
+:icons:         // not sure if this is needed
+:sourcedir: ../src
+:testdir: ../tests
+:uri-excel-dna-intellisense: https://github.com/Excel-DNA/IntelliSense/
+:uri-excel-dna-intellisense-issue-119: https://github.com/Excel-DNA/IntelliSense/issues/119
+:uri-JKP-FixLinks2UDF: https://jkp-ads.com/articles/FixLinks2UDF.asp
+:uri-license: https://choosealicense.com/licenses/mit/
+:uri-rubberduck: https://rubberduckvba.com/
+:uri-vscode-snippets: https://code.visualstudio.com/docs/editor/userdefinedsnippets
+:uri-vscode-marketplace-cspell: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
+:uri-vscode-marketplace-xml: https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml
+// show the corresponding icons on GitHub, because otherwise "just" the text will be shown
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :information_source:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+Extend Excel-DNA's IntelliSense with MacroOptions.
+
+This repository shows a possible implementation to address {uri-excel-dna-intellisense}[Excel-DNA's IntelliSense] feature request to also use the `.IntelliSense.xml` file to add `.MacroOptions` ({uri-excel-dna-intellisense-issue-119}[issue #119]).
+
+If you (@govert) like the code feel free to move it over to your repository or let me know if I should file a pull request.
+
+== Components
+
+ .vscode/cspell.json:: Spell checker file for the {uri-vscode-marketplace-cspell}[Code Spell Checker] extension for VS Code.
+ .vscode/ExcelDNA_IntelliSense.code-snippets:: (User defined) code snippet file for VS Code to make it really easy to functions and their arguments to the XML file.
+ .vscode/settings.json:: Useful settings for VS Code and the {uri-vscode-marketplace-xml}[XML] extension.
+ src/IntelliSense.xsd:: XSD file to easier check if the XML file is valid (to use content for `MacroOptions`).
+ src/modIntelliSense_XML.bas:: Module to extract the data from the XML file and to register the corresponding functions (using `MacroOptions`).
+ src/modProcessASOpen.bas:: Module to check if there is an active sheet. (Only then no runtime error is thrown when `MacroOptions` is used.) (This is based on a file from Jan Karel Pieterse's awesome code to {uri-jkp-fixlinks2udf}[Fix Links To UDFs in AddIns].)
+ src/modProcessAfterASOpen.bas:: Module to run individual code after there is an active sheet.
+ tests/modIntelliSense_XML_Test.bas:: {uri-rubberduck}[Rubberduck's] (unit) test module to check if the link:{sourcedir}/modIntelliSense_XML.bas[`+modIntelliSense_XML.bas+`] is doing what it should do.
+ tests/modMyTestFunctions.bas:: Module with test functions (maybe it sounds familiar).
+ tests/MyTest.IntelliSense.xml:: You should know that (too).
+ tests/MyTest.xlam:: An example AddIn containing all relevant modules and the (unit) tests.
+ tests/XMLs folder:: Contains the XML file for the unit tests.
+
+== Open points
+
+. Because I don't really have a clue how to test if functions are extracted correctly, most of the unit tests "`just`" cover error handling.
+Maybe one needs a fake/mock/stub. Do you have an idea?
+. In the `+IntelliSense.xsd+` I couldn't make the `+IntegerOrString+` simple type work for the `Category` argument (see the `+BUG:+` line in the code). Do you have an idea to make it work or is this impossible for `union` types (or maybe a bug in VS Code's XML extension)? (Before creating this file I didn't had any clue about XSD files ...)
+. In the `+IntelliSense.xsd+` I used the names of the `+MacroOptions+` arguments. Thus, I used `+HelpFile+` instead of `+HelpTopic+` which you used in your example. -> Rename one of them if the intension is the same.
+
+== FAQ
+
+What are the `+'@...+` comments good for in the code?::
+You should really have a look at the awesome {uri-rubberduck}[Rubberduck] project!
+
+== License
+
+{uri-license}[MIT]

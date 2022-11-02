@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../src/IntelliSense.xsd"?>
+<IntelliSense>
+	<FunctionInfo>
+		<Function
+			Name="MyVBAFunction"
+			Description="I am a test function."
+		>
+			<Argument
+				Name="FirstArg"
+				Description="This is the first argument."
+			/>
+			<Argument
+				Name="AnotherArg"
+				Description="This is another argument"
+			/>
+		</Function>
+	</FunctionInfo>
+</IntelliSense>

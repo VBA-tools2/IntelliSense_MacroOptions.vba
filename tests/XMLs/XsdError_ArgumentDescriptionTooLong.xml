@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../../src/IntelliSense.xsd"?>
+<IntelliSense
+	xmlns="http://schemas.excel-dna.net/intellisense/1.0"
+>
+	<FunctionInfo>
+		<Function
+			Name="MyVBAFunction"
+			Description="A function described in XML"
+	>
+			<Argument
+				Name="FirstArg"
+				Description="This is the first argument of the function"
+			/>
+			<Argument
+				Name="AnotherArg"
+				Description="This is the description to the best function in the world. But this description is way too long. It is &quot;only&quot; allowed to be 255 characters long. Therefore, unfortunately an error is raised. At least it is the hope that this will happen. Please see the test"
+			/>
+		</Function>
+	</FunctionInfo>
+</IntelliSense>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE IntelliSense [
+	<!ENTITY temp "Just a test.">
+]>
+<?xml-model href="../../src/IntelliSense.xsd"?>
+<IntelliSense
+	xmlns="http://schemas.excel-dna.net/intellisense/1.0"
+>
+	<FunctionInfo>
+		<Function
+			Name="MyVBAFunction"
+			Description="I am a test function."
+		>
+			<Argument
+				Name="FirstArg"
+				Description="This is the first argument."
+			/>
+			<Argument
+				Name="AnotherArg"
+				Description="This is another argument"
+			/>
+		</Function>
+	</FunctionInfo>
+</IntelliSense>

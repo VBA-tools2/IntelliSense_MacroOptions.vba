@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="../src/IntelliSense.xsd"?>
+<IntelliSense xmlns="http://schemas.excel-dna.net/intellisense/1.0">
+    <FunctionInfo>
+        <Function
+            Name="MyVBAFunction"
+            Description="A function described in XML"
+            HelpTopic="http://www.bing.com"
+            Category="EnviNOx"
+        >
+            <Argument
+                Name="FirstArg"
+                Description="Whatever you want to put in here"
+            />
+            <Argument
+                Name="AnotherArg"
+                Description="Actually the second arg"
+            />
+        </Function>
+        <Function
+            Name="AnotherFunction"
+            Description="A function described in XML"
+            HelpTopic="http://www.bing.com"
+        >
+            <Argument
+                Name="FirstArg"
+                Description="Whatever you want to put in here"
+            />
+            <Argument
+                Name="AnotherArg"
+                Description="Actually the second arg"
+            />
+        </Function>
+    </FunctionInfo>
+</IntelliSense>

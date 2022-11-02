@@ -1,0 +1,12 @@
+{
+    "editor.rulers": [
+        80,
+        // the limit of 255 characters (when no escaped characters are used like '&quot;')
+        281,
+    ],
+    "xml.format.closingBracketNewLine": true,
+    "xml.format.splitAttributes": true,
+    "xml.format.splitAttributesIndentSize": 1,
+    "xml.format.enforceQuoteStyle": "preferred",
+    "xml.preferences.quoteStyle": "double"
+}
